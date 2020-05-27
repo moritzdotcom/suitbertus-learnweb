@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand ml-4" href="/">LearnWeb</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/grades" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Stufen
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% Grade.all.each do |grade| %>
+            <%= link_to "Stufe #{grade.grade}", grade_path(grade), class: 'dropdown-item' %>
+            <% if grade != Grade.last %>
+              <div class="dropdown-divider"></div>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/subjects" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Fächer
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% Subject.all.each do |subject| %>
+            <%= link_to "#{subject.name}", subject_path(subject), class: 'dropdown-item' %>
+            <% if subject != Subject.last %>
+              <div class="dropdown-divider"></div>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Über uns</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Kontakt</a>
+      </li>
+    </ul>
+    <%= form_tag(search_path, method: 'get', class: 'form-inline my-2 my-lg-0') do %>
+      <%= search_field_tag 'search', nil, class: 'form-control mr-sm-2', placeholder: 'Lehrer, Fach, Jahr...'  %>
+      <%= submit_tag "Suchen", class: 'btn btn-outline-success my-2 my-sm-0', :name => nil %>
+    <% end %>
+  </div>
+</nav>

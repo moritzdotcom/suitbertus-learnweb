@@ -1,0 +1,7 @@
+<h2 class="about-header">Neue Stufe</h2>
+<%= simple_form_for(@grade) do |f| %>
+  <%= f.input :grade %>
+  <div class="d-flex justify-content-center mb-5">
+    <%= f.button :submit, class: "button-blue" %>
+  </div>
+<% end %>

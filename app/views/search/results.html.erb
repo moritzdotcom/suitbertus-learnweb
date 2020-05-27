@@ -1,0 +1,22 @@
+<h3><%= pluralize(@result_count, 'Ergebnis') %> für "<%= @search_term %>" gefunden</h3>
+
+<% if @subjects.count > 0 %>
+  <h2>Fächer</h2>
+  <% @subjects.each do |subject| %>
+    <%= link_to "#{subject.name}", subject_path(subject) %>
+  <% end %>
+<% end %>
+
+<% if @teachers.count > 0 %>
+  <h2>Lehrer</h2>
+  <% @teachers.each do |teacher| %>
+    <%= link_to "#{teacher.name}", teacher_path(teacher) %>
+  <% end %>
+<% end %>
+
+<% if @exams.count > 0 %>
+  <h2>Arbeiten</h2>
+  <% @exams.each do |exam| %>
+    <%= link_to "#{exam.title} (#{exam.year})", exam_path(exam) %>
+  <% end %>
+<% end %>

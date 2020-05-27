@@ -1,0 +1,9 @@
+<% @grades.each do |grade| %>
+  <p>Stufe <%= grade.grade %></p>
+<% end %>
+
+<% if user_signed_in? %>
+  <% if current_user.admin %>
+    <p><%= link_to "Neue Stufe", new_grade_path %></p>
+  <% end %>
+<% end %>

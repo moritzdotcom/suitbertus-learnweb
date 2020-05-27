@@ -1,2 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="home-image" style="background: url(<%= asset_path 'home-banner.jpg' %>) no-repeat center; background-size: cover; background-attachment: fixed;"></div>
+<div class="home-content">
+  <h1 class="pad-bottom-1 pad-top-1">Wilkommen bei Suitbertus Learnweb</h1>
+  <h3 class="pad-bottom-2">Auf dieser Seite findest du so gut wie alles was du brauchst, um dich optimal auf deine Klassenarbeiten und Klausuren vorzubereiten.</h3>
+  <h5 class="pad-bottom-2">Wir wollen eine Platform bieten, auf der alte Klausuren und Arbeiten hochgeladen werden können.</h5>
+
+  <h5 class="pad-bottom-half">Hier gehts zur Übersicht:</h5>
+  <%= link_to "Alle Stufen", grades_path %>
+</div>

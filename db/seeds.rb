@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+8.times do |i|
+  Grade.create(grade: i+5)
+  puts "Create Grade #{i+5}"
+end

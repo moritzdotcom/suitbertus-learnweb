@@ -7,7 +7,6 @@ class SubjectsController < ApplicationController
   end
 
   def show
-    @grades = @subject.grades.order(:grade)
   end
 
   def new
@@ -43,7 +42,7 @@ class SubjectsController < ApplicationController
   end
 
   def subject_params
-    params.require(:subject).permit(:name)
+    params.require(:subject).permit(:name, :grade_id)
   end
 
   def check_admin

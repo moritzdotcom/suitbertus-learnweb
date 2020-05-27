@@ -1,0 +1,13 @@
+.subject-list {
+  max-width: 400px;
+  margin: 0 auto;
+
+  a {
+    color: $dark-gray;
+    text-decoration: none;
+
+    :hover {
+      color: $main-green;
+    }
+  }
+}

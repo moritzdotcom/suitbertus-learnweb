@@ -26,15 +26,6 @@ ActiveRecord::Schema.define(version: 2020_05_27_144155) do
     t.index ["teacher_id"], name: "index_exams_on_teacher_id"
   end
 
-  create_table "grade_subjects", force: :cascade do |t|
-    t.bigint "grade_id"
-    t.bigint "subject_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["grade_id"], name: "index_grade_subjects_on_grade_id"
-    t.index ["subject_id"], name: "index_grade_subjects_on_subject_id"
-  end
-
   create_table "grades", force: :cascade do |t|
     t.integer "grade"
     t.datetime "created_at", null: false
@@ -43,8 +34,11 @@ ActiveRecord::Schema.define(version: 2020_05_27_144155) do
 
   create_table "subjects", force: :cascade do |t|
     t.string "name"
+    t.string "icon"
+    t.bigint "grade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["grade_id"], name: "index_subjects_on_grade_id"
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -69,6 +63,5 @@ ActiveRecord::Schema.define(version: 2020_05_27_144155) do
 
   add_foreign_key "exams", "subjects"
   add_foreign_key "exams", "teachers"
-  add_foreign_key "grade_subjects", "grades"
-  add_foreign_key "grade_subjects", "subjects"
+  add_foreign_key "subjects", "grades"
 end

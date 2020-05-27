@@ -1,5 +1,4 @@
 class Subject < ApplicationRecord
-  has_many :grade_subjects
-  has_many :grades, through: :grade_subjects
+  belongs_to :grade
   has_many :exams
 end

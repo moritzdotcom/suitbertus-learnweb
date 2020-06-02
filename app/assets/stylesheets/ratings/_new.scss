@@ -1,0 +1,29 @@
+.teacher-rating-inputs {
+  float: left;
+
+  span {
+    float: right;
+    position: relative;
+
+    input {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      opacity: 0;
+    }
+
+    label {
+      text-align: center;
+      color: $dark-gray;
+      font-size: 30px;
+      margin-right: .3rem;
+    }
+  }
+}
+
+.teacher-rating-inputs span:hover ~ span label,
+.teacher-rating-inputs span:hover label,
+.teacher-rating-inputs span.checked label,
+.teacher-rating-inputs span.checked ~ span label {
+    color: $yellow;
+}

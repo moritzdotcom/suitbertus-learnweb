@@ -1,0 +1,9 @@
+<div class="text-center mar-top-2 container">
+  <h1><i class="<%= @subject.icon %> pad-right-half"></i><%= @subject.name %> - Stufe <%= @subject.grade.grade %></h1>
+
+  <div class="exam-list main-list mar-top-2">
+    <% @subject.exams.each do |exam| %>
+      <%= render 'shared/exam-card', exam: exam %>
+    <% end %>
+  </div>
+</div>

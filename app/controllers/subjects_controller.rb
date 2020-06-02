@@ -7,6 +7,7 @@ class SubjectsController < ApplicationController
   end
 
   def show
+    @exams = @subject.exams
   end
 
   def new

@@ -1,22 +1,35 @@
-<h3><%= pluralize(@result_count, 'Ergebnis') %> für "<%= @search_term %>" gefunden</h3>
+<%= form_tag(search_path, method: 'get', class: 'form-inline mar-top-2') do %>
+  <div class="form-group mb-2 custom-width-70">
+    <%= search_field_tag 'search', nil, class: 'form-control', placeholder: @search_term  %>
+  </div>
+  <%= submit_tag "Suchen", class: 'btn btn-outline-success mb-2', :name => nil %>
+<% end %>
+
+<h3 class="mar-top-1"><%= pluralize(@result_count, 'Ergebnis') %> für "<%= @search_term %>"</h3>
 
 <% if @subjects.count > 0 %>
-  <h2>Fächer</h2>
-  <% @subjects.each do |subject| %>
-    <%= link_to "#{subject.name}", subject_path(subject) %>
-  <% end %>
+  <h2 class="mar-top-1">Fächer</h2>
+  <div class="subject-card-list main-list mar-top-2">
+    <% @subjects.each do |subject| %>
+      <%= render 'shared/subject-card', subject: subject %>
+    <% end %>
+  </div>
 <% end %>
 
 <% if @teachers.count > 0 %>
-  <h2>Lehrer</h2>
-  <% @teachers.each do |teacher| %>
-    <%= link_to "#{teacher.name}", teacher_path(teacher) %>
-  <% end %>
+  <h2 class="mar-top-1">Lehrer</h2>
+  <div class="teacher-list main-list mar-top-2">
+    <% @teachers.each do |teacher| %>
+      <%= render 'shared/teacher-card', teacher: teacher %>
+    <% end %>
+  </div>
 <% end %>
 
 <% if @exams.count > 0 %>
-  <h2>Arbeiten</h2>
-  <% @exams.each do |exam| %>
-    <%= link_to "#{exam.title} (#{exam.year})", exam_path(exam) %>
-  <% end %>
+  <h2 class="mar-top-1">Arbeiten</h2>
+  <div class="exam-list main-list mar-top-1">
+    <% @exams.each do |exam| %>
+      <%= render 'shared/exam-card', exam: exam %>
+    <% end %>
+  </div>
 <% end %>

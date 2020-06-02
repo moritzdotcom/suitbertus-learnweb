@@ -1,0 +1,15 @@
+.inline-link {
+  color: $main-green;
+
+  &:hover {
+    color: $hover-green;
+  }
+}
+
+.link-no-decoration {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

@@ -8,6 +8,7 @@ class GradesController < ApplicationController
 
   def show
     @subjects = @grade.subjects.sort_by{ |subj| - subj.exams.count }
+    @subject = Subject.new(grade: @grade)
   end
 
   def new

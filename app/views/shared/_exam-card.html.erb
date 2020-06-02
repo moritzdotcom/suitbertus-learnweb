@@ -1,0 +1,11 @@
+<a href="/exams/<%= exam.id %>" class="exam-card main-card card-hover-green" data-year="<%= exam.year %>" data-grade="Stufe <%= exam.subject.grade.grade %>" data-subject="<%= exam.subject.name %>" data-teacher="<%= exam.teacher.name %>">
+  <div class="exam-preview">
+    <%= cl_image_tag("#{exam.pdf_file.key}.png", :height=>100) %>
+  </div>
+  <h4><%= exam.title %> (<%= exam.year %>)</h4>
+  <% if controller_name == 'teachers' %>
+    <p><%= exam.subject.name %> - Stufe <%= exam.subject.grade.grade %></p>
+  <% else %>
+    <p><%= exam.subject.name %> - Stufe <%= exam.subject.grade.grade %> - <%= exam.teacher.name %></p>
+  <% end %>
+</a>

@@ -1,0 +1,23 @@
+<div class="container mar-top-2 text-center">
+  <h1>Hallo, <%= @user.first_name %></h1>
+  <%= link_to 'Profil bearbeiten', edit_user_registration_path, class: 'btn button-sign-up' %>
+  <% if @exams.count > 0 %>
+    <h3 class="mar-top-1">Deine Klausuren</h3>
+    <h5>Danke, dass du <%= pluralize(@exams.count, 'Klausur') %> hochgeladen hast!</h5>
+    <div class="exam-list main-list mar-top-2">
+      <% @exams.each do |exam| %>
+        <%= render 'shared/exam-card', exam: exam %>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @ratings.count > 0 %>
+    <h3 class="mar-top-1">Deine Bewertungen</h3>
+    <h5>Du hast <%= @ratings.count %> Lehrer bewertet</h5>
+    <div class="rating-list main-list mar-top-2">
+      <% @ratings.each do |rating| %>
+        <%= link_to (render 'shared/rating-card', rating: rating, show_teacher: true, hover: true), edit_teacher_rating_path(rating.teacher, rating), class: 'link-no-decoration d-flex' %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= link_to 'Abmelden', destroy_user_session_path, method: :delete, class: 'btn btn-danger mar-top-1' %>
+</div>

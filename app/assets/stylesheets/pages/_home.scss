@@ -15,28 +15,3 @@
     text-decoration: none;
   }
 }
-
-.big-button {
-  text-align: center;
-  padding: 2rem 0;
-  border-radius: 10px;
-  border: solid 2px $dark-gray;
-  color: $dark-gray;
-  margin-bottom: 1rem;
-  position: relative;
-  background-image: linear-gradient($dark-gray, $dark-gray);
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: 100% 0%;
-  transition: background-size .3s, color .5s;
-
-  i {
-    font-size: 2em;
-    padding-bottom: 1rem;
-  }
-
-  &:hover {
-    background-size: 100% 100%;
-    color: #F4F4F4;
-  }
-}

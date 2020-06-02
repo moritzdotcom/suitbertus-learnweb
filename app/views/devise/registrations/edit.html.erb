@@ -1,35 +1,85 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container mar-top-2 center-content">
+  <h2>Profil bearbeiten</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <div class="form-inputs">
+      <div class="form-inputs-inline">
+        <div class="input-inline">
+          <div class="input-field mar-top-2" style="width: 100%;">
+            <%= f.input_field :first_name, placeholder: ' ', style: 'display: block;' %>
+            <%= f.label :first_name, label: 'Vorname' %>
+          </div>
+          <div class="form-error-message">
+            <%= resource.errors.full_messages_for(:first_name).last if resource.errors.has_key?(:first_name) %>
+          </div>
+        </div>
+        <div class="input-inline">
+          <div class="input-field mar-top-2" style="width: 100%;">
+            <%= f.input_field :last_name, placeholder: ' ', style: 'display: block;' %>
+            <%= f.label :last_name, label: 'Nachname' %>
+          </div>
+          <div class="form-error-message">
+            <%= resource.errors.full_messages_for(:last_name).last if resource.errors.has_key?(:last_name) %>
+          </div>
+        </div>
+      </div>
+      <div class="input-field mar-top-2">
+        <%= f.input_field :email, placeholder: ' ', style: 'display: block;' %>
+        <%= f.label :email %>
+      </div>
+      <div class="form-error-message">
+        <%= resource.errors.full_messages_for(:email).last if resource.errors.has_key?(:email) %>
+      </div>
+      <div class="input-field mar-top-3">
+        <%= f.input_field :password, placeholder: ' ', required: false, hint: "Frei lassen, wenn du dein Passwort nicht ändern willst", input_html: { autocomplete: "new-password" }, style: 'display: block;' %>
+        <%= f.label :password, label: 'Neues Passwort' %>
+        <span class="toggle-password" data-toggle="user_password"><i class="fas fa-eye"></i></span>
+      </div>
+      <div class="form-error-message">
+        <%= resource.errors.full_messages_for(:password).last if resource.errors.has_key?(:password) %>
+      </div>
+      <div class="input-field mar-top-3">
+        <%= f.input_field :password_confirmation, placeholder: ' ', required: false, input_html: { autocomplete: "new-password" }, style: 'display: block;' %>
+        <%= f.label :password_confirmation, label: 'Passwort bestätigen' %>
+        <span class="toggle-password" data-toggle="user_password_confirmation"><i class="fas fa-eye"></i></span>
+      </div>
+      <div class="form-error-message">
+        <%= resource.errors.full_messages_for(:password_confirmation).last if resource.errors.has_key?(:password_confirmation) %>
+      </div>
+      <div class="input-field mar-top-3">
+        <%= f.input_field :current_password, placeholder: ' ', required: true, hint: "Wir benötigen dein Passwort, um deine Änderungen zu speichern", input_html: { autocomplete: "current-password" }, style: 'display: block;' %>
+        <%= f.label :current_password, label: 'Aktuelles Passwort' %>
+        <span class="toggle-password" data-toggle="user_current_password"><i class="fas fa-eye"></i></span>
+      </div>
+      <div class="form-error-message">
+        <%= resource.errors.full_messages_for(:current_password).last if resource.errors.has_key?(:current_password) %>
+      </div>
+    </div>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+    <div class="form-actions center-content">
+      <%= f.button :submit, "Speichern", class: "button-sign-in" %>
+    </div>
+    <div class="mar-top-2 pad-top-1 center-content form-links">
+      <%= link_to "Zurück", :back, class: 'btn button-sign-up mar-bottom-1' %>
+    </div>
+    <div class="pad-top-1 center-content form-links">
+      <h3>Account löschen</h3>
+      <p>Hier kannst du deinen Account löschen</p>
+      <%= link_to "Account löschen", registration_path(resource_name), data: { confirm: "Deinen Account wirklich löschen?" }, method: :delete, class: "btn btn-danger" %>
+    </div>
+  <% end %>
+</div>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+<script>
+  showButtons = document.querySelectorAll('.toggle-password')
+  showButtons.forEach(button => {
+    button.addEventListener('mouseenter', e => {
+      document.getElementById(button.dataset.toggle).type = 'text';
+    });
+    button.addEventListener('mouseleave', e => {
+      document.getElementById(button.dataset.toggle).type = 'password';
+    });
+  });
+</script>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>

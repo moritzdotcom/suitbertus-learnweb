@@ -1,20 +1,35 @@
-<h2>Log in</h2>
+<div class="container mar-top-2 center-content">
+  <h2>Einloggen</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <div class="input-field mar-top-2">
+        <%= f.input_field :email, placeholder: ' ', required: false, autofocus: true, input_html: { autocomplete: "email" }, style: 'display: block;' %>
+        <%= f.label :email %>
+      </div>
+      <div class="input-field mar-top-3 mar-bottom-2">
+        <%= f.input_field :password, placeholder: ' ', required: false, input_html: { autocomplete: "current-password" }, style: 'display: block;' %>
+        <%= f.label :password, label: 'Passwort' %>
+        <span class="toggle-password" data-toggle="user_password"><i class="fas fa-eye"></i></span>
+      </div>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+    <div class="form-actions center-content">
+      <%= f.button :submit, "Einloggen", class: "button-sign-up" %>
+    </div>
+    <div class="mar-top-2 pad-top-1 center-content form-links">
+      <%= render "devise/shared/links" %>
+    </div>
+  <% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+<script>
+  showButton = document.querySelector('.toggle-password')
+  showButton.addEventListener('mouseenter', e => {
+    document.getElementById(showButton.dataset.toggle).type = 'text';
+  });
+  showButton.addEventListener('mouseleave', e => {
+    document.getElementById(showButton.dataset.toggle).type = 'password';
+  });
+</script>

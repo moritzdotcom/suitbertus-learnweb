@@ -1,0 +1,51 @@
+<% if user_signed_in? %>
+  <div class="container mar-top-2 text-center">
+    <h1 class="mar-bottom-half"><%= @teacher.name %></h1>
+    <%= simple_form_for([@teacher, @rating]) do |f| %>
+      <div class="center-content">
+        <div class="teacher-rating-inputs">
+          <span><input type="radio" id="str5" value="5"><label for="str5" class="fas fa-star"></label></span>
+          <span><input type="radio" id="str4" value="4"><label for="str4" class="fas fa-star"></label></span>
+          <span><input type="radio" id="str3" value="3"><label for="str3" class="fas fa-star"></label></span>
+          <span><input type="radio" id="str2" value="2"><label for="str2" class="fas fa-star"></label></span>
+          <span><input type="radio" id="str1" value="1"><label for="str1" class="fas fa-star"></label></span>
+        </div>
+      </div>
+      <%= f.input :rating, as: :hidden, error: 'Bitte bewerte den Lehrer' %>
+      <%= f.input :comment, label: 'Kommentar' %>
+      <div class="d-flex justify-content-center mb-5">
+        <%= f.button :submit, 'Bewerten', class: "button-small button-sign-in" %>
+      </div>
+    <% end %>
+    <%= link_to 'Zurück', teacher_path(@teacher), class: 'btn button-sign-up mar-bottom-1' %>
+  </div>
+
+<% else %>
+  <div class="container mar-top-2 text-center">
+    <h1><%= @teacher.name %></h1>
+    <h3>Um einen Lehrer zu bewerten, musst du dich zuerst anmelden.</h3>
+    <h3>Wenn du dich noch nicht angemeldet hast, kannst du auch ein neues Konto erstellen.</h3>
+    <div class="inline-buttons mar-top-2">
+      <%= link_to 'Anmelden', new_user_session_path, class: 'button button-sign-in mar-right-1' %>
+      <%= link_to 'Registrieren', new_user_registration_path, class: 'button button-sign-up' %>
+    </div>
+    <%= link_to 'Zurück', teacher_path(@teacher), class: 'btn button-sign-up mar-bottom-1' %>
+  </div>
+<% end %>
+
+<script>
+  $(document).ready(function(){
+    // Check Radio-box
+    $(".teacher-rating-inputs input:radio").attr("checked", false);
+
+    $('.teacher-rating-inputs input').click(function () {
+      $(".teacher-rating-inputs span").removeClass('checked');
+      $(this).parent().addClass('checked');
+    });
+
+    $('input:radio').change(
+      function(){
+        $('#rating_rating').val(Number(this.value));
+    });
+  });
+</script>

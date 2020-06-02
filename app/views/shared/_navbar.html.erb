@@ -19,12 +19,31 @@
           <% end %>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Über uns</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="/exams" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Klausuren
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/exams">Alle Klausuren</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/exams/new">Klausur hochladen</a>
+        </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Kontakt</a>
+        <a class="nav-link" href="/teachers">Lehrer</a>
       </li>
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to 'Dein Profil', dashboard_path, class: 'nav-link' %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Anmelden', new_user_session_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Registrieren', new_user_registration_path, class: 'nav-link' %>
+        </li>
+      <% end %>
     </ul>
     <%= form_tag(search_path, method: 'get', class: 'form-inline my-2 my-lg-0') do %>
       <%= search_field_tag 'search', nil, class: 'form-control mr-sm-2', placeholder: 'Lehrer, Fach, Jahr...'  %>

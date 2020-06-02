@@ -1,0 +1,9 @@
+<div class="rating-card main-card <%= 'card-hover-green' if hover %>">
+  <%= render 'shared/teacher-rating', rating: rating.rating %>
+  <% if show_teacher %>
+    <h5 class="mar-top-half"><%= rating.teacher.name %></h5>
+  <% else %>
+    <h5 class="mar-top-half"><%= rating.user.full_name.strip() == '' ? 'Anonym' : rating.user.full_name %></h5>
+  <% end %>
+  <p><%= rating.comment %></p>
+</div>

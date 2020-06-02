@@ -30,4 +30,16 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      exam:
+        title: "Titel"
+        year: "Jahr"
+        subject: "Fach"
+        grade: "Stufe"
+        teacher_name: "Lehrer"
+        pdf_file: "PDF Datei"
+
+en:
+ errors:
+   format: "%{message}"

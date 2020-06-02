@@ -1,0 +1,9 @@
+@import "show";
+
+.exam-hide-year, .exam-hide-teacher, .exam-hide-subject, .exam-hide-grade, .hide-message {
+  display: none !important;
+}
+
+#noResultsMessage {
+  text-align: center;
+}

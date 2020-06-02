@@ -1,0 +1,43 @@
+<div class="container mar-top-2 text-center">
+  <h1 class="mar-bottom-half"><%= @teacher.name %></h1>
+  <%= simple_form_for([@teacher, @rating]) do |f| %>
+    <div class="center-content">
+      <div class="teacher-rating-inputs">
+        <span id="star-5"><input type="radio" id="str5" value="5"><label for="str5" class="fas fa-star"></label></span>
+        <span id="star-4"><input type="radio" id="str4" value="4"><label for="str4" class="fas fa-star"></label></span>
+        <span id="star-3"><input type="radio" id="str3" value="3"><label for="str3" class="fas fa-star"></label></span>
+        <span id="star-2"><input type="radio" id="str2" value="2"><label for="str2" class="fas fa-star"></label></span>
+        <span id="star-1"><input type="radio" id="str1" value="1"><label for="str1" class="fas fa-star"></label></span>
+      </div>
+    </div>
+    <%= f.input :rating, as: :hidden, error: 'Bitte bewerte den Lehrer' %>
+    <%= f.input :comment, label: 'Kommentar' %>
+    <div class="d-flex justify-content-center mb-5">
+      <%= f.button :submit, 'Fertig', class: "button-small button-sign-in" %>
+    </div>
+  <% end %>
+  <div class="d-flex justify-content-center">
+    <%= link_to 'Zurück', :back, class: 'btn button-sign-up mar-right-1' %>
+    <%= link_to 'Löschen', teacher_rating_path(@teacher, @rating), data: { confirm: "Diese Bewertung wirklich löschen?" }, method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>
+
+<script>
+  rating = document.getElementById('rating_rating').value;
+  document.getElementById(`star-${rating}`).classList.add('checked');
+
+  $(document).ready(function(){
+    // Check Radio-box
+    $(".teacher-rating-inputs input:radio").attr("checked", false);
+
+    $('.teacher-rating-inputs input').click(function () {
+      $(".teacher-rating-inputs span").removeClass('checked');
+      $(this).parent().addClass('checked');
+    });
+
+    $('input:radio').change(
+      function(){
+        $('#rating_rating').val(Number(this.value));
+    });
+  });
+</script>

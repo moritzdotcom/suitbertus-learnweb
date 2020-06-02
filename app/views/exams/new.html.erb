@@ -1,0 +1,60 @@
+<% if user_signed_in? %>
+  <div class="container mar-top-2">
+    <h1>Neue Klausur</h1>
+    <%= simple_form_for(@exam) do |f| %>
+      <%= f.input :title, label: 'Titel', placeholder: 'Titel', error: 'Bitte trage hier den Titel der Klausur ein' %>
+      <%= f.input :year, label: 'Jahr', collection: (2000..Date.today.year).to_a.reverse, error: 'Bitte trage hier das Jahr der Klausur ein' %>
+      <%= f.input :subject, label: 'Fach', collection: Subject.distinct.pluck(:name), error: 'Bitte wähle hier das Fach der Klausur aus' %>
+      <%= f.input :grade,label: 'Stufe', collection: Grade.distinct.pluck(:grade).sort_by(&:to_i).map { |grade| "Stufe #{grade}" }, error: 'Bitte wähle hier die Stufe aus, in der die Klausur geschreiben wurde' %>
+      <div class="ui-widget">
+        <%= f.input :teacher_name, label: 'Lehrer', placeholder: 'Lehrer', error: 'Bitte trage hier den Namen des Lehrers ein' %>
+      </div>
+      <div class="file-upload d-flex align-items-center">
+        <%= f.label :pdf_file, label: '<i class="fas fa-upload"></i> PDF'.html_safe, class: 'button-small button-sign-in mar-right-1' %>
+        <%= f.input_field :pdf_file, as: :file, error: 'Bitte lade hier eine PDF Datei der Klausur hoch' %>
+        <h5 id="pdf-file-uploaded"></h5><h5 id="pdf-file-uploaded-error" style="color: red; margin-left: 1rem;"></h5>
+      </div>
+      <div class="d-flex justify-content-center mb-5">
+        <%= f.button :submit, 'Hochladen', disabled: true, class: "button button-sign-in", id: 'submit' %>
+      </div>
+    <% end %>
+  </div>
+
+  <script>
+    $( function() {
+      var availableTeachers = <%= raw @teachers %>;
+
+      $( "#exam_teacher_name" ).autocomplete({
+        source: availableTeachers
+      });
+    });
+
+    fileUpload = document.querySelector('.file-upload input')
+    fileUpload.addEventListener('input', () => {
+      if(fileUpload.files.length == 1) {
+        document.getElementById('pdf-file-uploaded-error').innerText = ''
+        document.getElementById('pdf-file-uploaded').innerText = fileUpload.files[0].name
+        if(fileUpload.files[0].type == 'application/pdf') {
+          document.querySelector('#submit').disabled = false
+        } else {
+          document.getElementById('pdf-file-uploaded-error').innerText = ' Bitte lade eine PDF Datei hoch'
+          document.querySelector('#submit').disabled = true
+        }
+      }
+    });
+
+    document.getElementById('exam_pdf_file').style.display = 'none'
+
+  </script>
+
+<% else %>
+  <div class="container mar-top-2 text-center">
+    <h1>Neue Klausur</h1>
+    <h3>Um eine Klausur hochladen zu können, musst du dich zuerst anmelden.</h3>
+    <h3>Wenn du dich noch nicht angemeldet hast, kannst du auch ein neues Konto erstellen.</h3>
+    <div class="inline-buttons mar-top-2">
+      <%= link_to 'Anmelden', new_user_session_path, class: 'button button-sign-in mar-right-1' %>
+      <%= link_to 'Registrieren', new_user_registration_path, class: 'button button-sign-up' %>
+    </div>
+  </div>
+<% end %>

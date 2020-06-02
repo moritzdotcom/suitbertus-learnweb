@@ -93,3 +93,9 @@
 .pad-right-2 {
   padding-right: 2em;
 }
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

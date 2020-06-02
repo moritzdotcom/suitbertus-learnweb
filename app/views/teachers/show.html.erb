@@ -1,0 +1,35 @@
+<div class="container text-center mar-top-2">
+  <h1><%= @teacher.name %></h1>
+  <h4>
+  <% @subjects.each_with_index do |subject, i| %>
+    <%= i + 1 == @subjects.count ? "#{subject}" : "#{subject} - " %>
+  <% end %>
+  </h4>
+  <div class="center-content">
+    <a href="#ratings-section" class="d-flex align-items-center inline-link link-no-decoration">
+      <%= render 'shared/teacher-rating', rating: @teacher.rating %>
+      <span class="pad-left-half"><%= "(#{@teacher.ratings.count})" %></span>
+    </a>
+    <% if user_signed_in? %>
+      <% if !current_user.has_rated(@teacher) %>
+        <%= link_to 'Lehrer bewerten', new_teacher_rating_path(@teacher), class: 'btn button-sign-up mar-top-1' %>
+      <% else %>
+        <%= link_to 'Bewertung ändern', edit_teacher_rating_path(@teacher, @teacher.ratings.find_by_user_id(current_user)), class: 'btn button-sign-up mar-top-1' %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <h2 class="mar-top-1 pad-top-half form-links">Klausuren</h2>
+  <div class="exam-list main-list mar-top-2">
+    <% @teacher.exams.order(year: :desc).each do |exam| %>
+      <%= render 'shared/exam-card', exam: exam %>
+    <% end %>
+  </div>
+
+  <h2 class="mar-top-1 pad-top-half form-links" id="ratings-section">Bewertungen</h2>
+  <div class="rating-list main-list mar-top-2">
+    <% @teacher.ratings.each do |rating| %>
+      <%= render 'shared/rating-card', rating: rating, show_teacher: false, hover: false %>
+    <% end %>
+  </div>
+</div>

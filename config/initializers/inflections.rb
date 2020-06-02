@@ -17,4 +17,5 @@
 
 ActiveSupport::Inflector.inflections do |inflect|
   inflect.plural 'Ergebnis', 'Ergebnisse'
+  inflect.plural 'Klausur', 'Klausuren'
 end

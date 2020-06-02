@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   resources :grades
   resources :subjects
   resources :exams
-  resources :teachers
+  resources :teachers do
+    resources :ratings, only: [:new, :create, :edit, :update, :destroy]
+  end
 
   get '/search', to: 'search#results', as: :search
+  get '/dashboard', to: 'pages#dashboard', as: :dashboard
 end

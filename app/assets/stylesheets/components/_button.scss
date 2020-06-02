@@ -1,0 +1,81 @@
+.inline-buttons {
+  margin: 0 auto;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.button {
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  transition: background .3s, color .5s;
+  cursor: pointer;
+}
+
+.button-small {
+  padding: .5rem 1rem;
+  border-radius: 10px;
+  transition: background .3s, color .5s;
+  cursor: pointer;
+}
+
+.button-sign-up {
+  background: $dark-gray;
+  color: white;
+
+  &:hover {
+    background: $hover-gray;
+    color: black;
+  }
+}
+
+.button-sign-in {
+  background: $main-green;
+  color: white;
+
+  &:hover {
+    background: $hover-green;
+    color: black;
+  }
+}
+
+.icon-link {
+  color: $main-green;
+
+  &:hover {
+    color: $hover-green;
+  }
+}
+
+.file-upload {
+  input {
+    cursor: pointer;
+    color: $main-green;
+  }
+}
+
+.big-button {
+  text-align: center;
+  padding: 2rem 0;
+  border-radius: 10px;
+  border: solid 2px $dark-gray;
+  color: $dark-gray;
+  margin-bottom: 1rem;
+  position: relative;
+  background-image: linear-gradient($dark-gray, $dark-gray);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 100% 0%;
+  transition: background-size .3s, color .5s;
+
+  i {
+    font-size: 2em;
+    padding-bottom: 1rem;
+  }
+
+  &:hover {
+    background-size: 100% 100%;
+    color: $main-green;
+  }
+}

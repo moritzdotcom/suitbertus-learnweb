@@ -1,0 +1,15 @@
+<div class="d-flex">
+  <% (rating.to_i).times do %>
+    <i class="fas fa-star teacher-rating"></i>
+  <% end %>
+  <% if rating.to_i == 0 || (rating % rating.to_i) < 0.3 && rating < 5 %>
+    <i class="far fa-star teacher-rating"></i>
+  <% elsif (rating % rating.to_i) > 0.3 && (rating % rating.to_i) < 0.7 %>
+    <i class="fas fa-star-half-alt teacher-rating"></i>
+  <% elsif (rating % rating.to_i) > 0.7 %>
+    <i class="fas fa-star teacher-rating"></i>
+  <% end %>
+  <% (4 - rating.to_i).times do %>
+    <i class="far fa-star teacher-rating"></i>
+  <% end %>
+</div>

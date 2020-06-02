@@ -1,0 +1,8 @@
+<div class="container mar-top-2">
+  <h1>Alle Lehrer</h1>
+  <div class="teacher-list main-list mar-top-2">
+    <% @teachers.each do |teacher| %>
+      <%= render 'shared/teacher-card', teacher: teacher %>
+    <% end %>
+  </div>
+</div>

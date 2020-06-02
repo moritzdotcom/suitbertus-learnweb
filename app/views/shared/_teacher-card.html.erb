@@ -1,0 +1,12 @@
+<a href="/teachers/<%= teacher.id %>" class="teacher-card main-card card-hover-green">
+  <h3><%= teacher.name %></h3>
+  <h5>
+  <% subjects = teacher.subjects.map { |subject| subject.name }.uniq %>
+  <% subjects.each_with_index do |subject, i| %>
+    <% break if subjects.nil? %>
+    <%= i + 1 == subjects.count ? "#{subject}" : "#{subject} - " %>
+  <% end %>
+  </h5>
+  <%= render 'shared/teacher-rating', rating: teacher.rating %>
+  <p class="mar-top-half">Klausuren: <%= teacher.exams.count %></p>
+</a>

@@ -1,0 +1,25 @@
+<div class="container mar-top-2 exam-show-content">
+  <%= simple_form_for(@exam) do |f| %>
+    <%= f.input :title, value: "#{@exam.title}", error: 'Bitte trage hier den Titel der Klausur ein' %>
+    <%= f.input :year, collection: (2000..Date.today.year).to_a.reverse, value: @exam.year, error: 'Bitte trage hier das Jahr der Klausur ein' %>
+    <%= f.input :subject, collection: Subject.distinct.pluck(:name), value: "#{@exam.subject.name}", error: 'Bitte wähle hier das Fach der Klausur aus' %>
+    <%= f.input :grade, collection: Grade.distinct.pluck(:grade).sort_by(&:to_i).map { |grade| "Stufe #{grade}" }, value: "Stufe #{@exam.subject.grade.grade}", error: 'Bitte wähle hier die Stufe aus, in der die Klausur geschreiben wurde' %>
+    <div class="ui-widget">
+      <%= f.input :teacher_name, value: "#{@exam.teacher.name}", error: 'Bitte trage hier den Namen des Lehrers ein' %>
+    </div>
+    <div class="d-flex justify-content-center mb-5">
+      <%= f.button :submit, class: "button button-sign-in mar-right-1" %>
+      <%= link_to 'Abbrechen', exam_path(@exam), class: "button button-sign-up" %>
+    </div>
+  <% end %>
+</div>
+
+<script>
+  $( function() {
+    var availableTeachers = <%= raw @teachers %>;
+
+    $( "#exam_teacher_name" ).autocomplete({
+      source: availableTeachers
+    });
+  });
+</script>

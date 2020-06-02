@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# 8.times do |i|
-#   Grade.create(grade: i+5)
-#   puts "Create Grade #{i+5}"
-# end
+8.times do |i|
+  Grade.create(grade: i+5)
+  puts "Create Grade #{i+5}"
+end
 
 Grade.all.each do |grade|
   subject = Subject.new(name: 'Mathematik', icon: 'fas fa-calculator')
@@ -23,6 +23,5 @@ Grade.all.each do |grade|
   subject = Subject.new(name: 'Englisch', icon: 'fas fa-flag-usa')
   subject.grade = grade
   subject.save
-
 end
 

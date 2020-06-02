@@ -10,8 +10,6 @@ class User < ApplicationRecord
   validates_presence_of :first_name, message: 'Dein Vorname'
   validates_presence_of :last_name, message: 'Dein Nachname'
   validates_presence_of :email, message: 'Bitte trage deine Email ein'
-  validates_presence_of :password, message: 'Bitte wähle ein sicheres Passwort'
-  validates_presence_of :password_confirmation, message: 'Bitte trage hier das gleiche Passwort ein'
 
   def full_name
     "#{first_name} #{last_name}"

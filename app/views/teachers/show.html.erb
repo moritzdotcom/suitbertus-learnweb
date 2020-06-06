@@ -19,14 +19,14 @@
     <% end %>
   </div>
 
-  <h2 class="mar-top-1 pad-top-half form-links">Klausuren</h2>
+  <h2 class="mar-top-1 pad-top-half">Klausuren (<%= @teacher.exams.count %>)</h2>
   <div class="exam-list main-list mar-top-2">
     <% @teacher.exams.order(year: :desc).each do |exam| %>
       <%= render 'shared/exam-card', exam: exam %>
     <% end %>
   </div>
 
-  <h2 class="mar-top-1 pad-top-half form-links" id="ratings-section">Bewertungen</h2>
+  <h2 class="mar-top-1 pad-top-half" id="ratings-section">Bewertungen (<%= @teacher.ratings.count %>)</h2>
   <div class="rating-list main-list mar-top-2">
     <% @teacher.ratings.each do |rating| %>
       <%= render 'shared/rating-card', rating: rating, show_teacher: false, hover: false %>

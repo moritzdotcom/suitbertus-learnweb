@@ -31,7 +31,7 @@
         <%= resource.errors.full_messages_for(:email).last if resource.errors.has_key?(:email) %>
       </div>
       <div class="input-field mar-top-3">
-        <%= f.input_field :password, placeholder: ' ', required: false, hint: "Frei lassen, wenn du dein Passwort nicht ändern willst", input_html: { autocomplete: "new-password" }, style: 'display: block;' %>
+        <%= f.input_field :password, placeholder: ' ', required: false, hint: "Frei lassen, wenn du dein Passwort nicht ändern willst", style: 'display: block;' %>
         <%= f.label :password, label: 'Neues Passwort' %>
         <span class="toggle-password" data-toggle="user_password"><i class="fas fa-eye"></i></span>
       </div>
@@ -39,7 +39,7 @@
         <%= resource.errors.full_messages_for(:password).last if resource.errors.has_key?(:password) %>
       </div>
       <div class="input-field mar-top-3">
-        <%= f.input_field :password_confirmation, placeholder: ' ', required: false, input_html: { autocomplete: "new-password" }, style: 'display: block;' %>
+        <%= f.input_field :password_confirmation, placeholder: ' ', required: false, style: 'display: block;' %>
         <%= f.label :password_confirmation, label: 'Passwort bestätigen' %>
         <span class="toggle-password" data-toggle="user_password_confirmation"><i class="fas fa-eye"></i></span>
       </div>

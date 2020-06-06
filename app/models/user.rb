@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def has_rated(teacher)
     ratings.where(teacher: teacher).exists?
   end
+
+  def pro_member
+    exams.count > 5
+  end
 end

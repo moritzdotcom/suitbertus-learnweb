@@ -1,7 +1,14 @@
 .teacher-list {
 
   .teacher-card {
-    height: 150px;
+
+  }
+}
+
+.grade-list {
+
+  .grade-card {
+
   }
 }
 
@@ -50,12 +57,14 @@
   width: 100%;
   border: 1px solid $dark-gray;
   border-radius: 7px;
+  box-shadow: 3px 3px 5px $hover-gray;
 }
 
 .card-hover-green {
   &:hover {
     text-decoration: none;
     color: $main-green;
+    box-shadow: 1px 1px 3px $hover-gray;
   }
 }
 
@@ -64,7 +73,7 @@
   .exam-list {
     grid-template-columns: 1fr;
   }
-  .subject-card-list, .teacher-list, .rating-list {
+  .subject-card-list, .teacher-list, .rating-list, .grade-list {
     grid-template-columns: 1fr;
   }
 }
@@ -74,7 +83,7 @@
   .exam-list {
     grid-template-columns: 1fr;
   }
-  .subject-card-list, .teacher-list, .rating-list {
+  .subject-card-list, .teacher-list, .rating-list, .grade-list {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -84,7 +93,7 @@
   .exam-list {
     grid-template-columns: 1fr 1fr;
   }
-  .subject-card-list, .teacher-list, .rating-list {
+  .subject-card-list, .teacher-list, .rating-list, .grade-list {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -94,7 +103,7 @@
   .exam-list {
     grid-template-columns: 1fr 1fr;
   }
-  .subject-card-list, .teacher-list, .rating-list {
+  .subject-card-list, .teacher-list, .rating-list, .grade-list {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
@@ -104,7 +113,7 @@
   .exam-list {
     grid-template-columns: 1fr 1fr 1fr;
   }
-  .subject-card-list, .teacher-list, .rating-list {
+  .subject-card-list, .teacher-list, .rating-list, .grade-list {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

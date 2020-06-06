@@ -1,21 +1,11 @@
 <div class="container mar-top-2">
-  <% @grades.each_with_index do |grade, i| %>
-    <% if i % 4 == 0 %>
-      <div class="row">
+  <h1>Stufen</h1>
+  <div class="grade-list main-list mar-top-2">
+    <% @grades.each do |grade| %>
+      <%= render 'shared/grade-card', grade: grade %>
     <% end %>
-      <div class="col-sm-12 col-md-6 col-lg-3">
-        <a style="text-decoration: none;" href=<%= "/grades/#{grade.id}" %>>
-          <div class="big-button">
-            <h3><%= "Stufe #{grade.grade}" %></h3>
-          </div>
-        </a>
-      </div>
-    <% if i % 4 == 3 %>
-      </div>
-    <% end %>
-  <% end %>
+  </div>
 </div>
-
 
 <% if user_signed_in? %>
   <% if current_user.admin %>

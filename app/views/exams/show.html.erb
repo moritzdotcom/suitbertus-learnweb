@@ -16,4 +16,12 @@
     </div>
   </div>
   <iframe src="<%= cl_image_path @exam.pdf_file.key %>" id="exam-pdf-reader"> </iframe>
+  <% if @related_exams.count > 0 %>
+    <h4 class="mar-top-1">Weitere Klausuren</h4>
+    <div class="exam-list main-list mar-top-half mar-bottom-1">
+      <% @related_exams.each do |exam| %>
+        <%= render 'shared/exam-card', exam: exam %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

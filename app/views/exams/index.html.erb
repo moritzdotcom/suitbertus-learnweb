@@ -1,6 +1,6 @@
 <div class="container mar-top-2">
   <h1>Alle Klausuren (<span id="examCount"><%= Exam.all.count %></span>)</h1>
-  <h4>Hier findest du alle Klausuren. <%= link_to 'Hier', new_exam_path, class: 'inline-link' %> kannst du eine neue Klausur hochladen.</h4>
+  <h4><%= link_to 'Hier', new_exam_path, class: 'inline-link' %> kannst du eine neue Klausur hochladen.</h4>
   <form class="filter-options">
     <div class="form-row">
       <div class="form-group col-sm-12 col-md-3 col-lg-4">

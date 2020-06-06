@@ -10,7 +10,7 @@
 
   <h3 class="mar-top-2">Lehrer</h3>
   <div class="teacher-list main-list mar-top-2">
-    <% @subject.teachers.each do |teacher| %>
+    <% @subject.teachers.uniq().each do |teacher| %>
       <%= render 'shared/teacher-card', teacher: teacher %>
     <% end %>
   </div>

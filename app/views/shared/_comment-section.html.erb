@@ -17,9 +17,17 @@
   <% end %>
 <% end %>
 <div class="new-comment-form">
-  <%= simple_form_for([exam, comment], remote: true) do |f| %>
-    <%= f.input_field :content, placeholder: 'Kommentar...' %>
-    <%= f.button :submit, 'Senden', disabled: true, class: 'button-small button-sign-in mar-left-1', id: 'submit-button' %>
+  <% if user_signed_in? %>
+    <%= simple_form_for([exam, comment], remote: true) do |f| %>
+      <%= f.input_field :content, placeholder: 'Kommentar...' %>
+      <%= f.button :submit, 'Senden', disabled: true, class: 'button-small button-sign-in mar-left-1', id: 'submit-button' %>
+    <% end %>
+  <% else %>
+    <p>Melde dich an, um zu kommentieren</p>
+    <div class="inline-buttons mar-top-2 mar-bottom-2">
+      <%= link_to 'Anmelden', new_user_session_path, class: 'button button-sign-in mar-right-1' %>
+      <%= link_to 'Registrieren', new_user_registration_path, class: 'button button-sign-up' %>
+    </div>
   <% end %>
 </div>
 
@@ -27,11 +35,13 @@
   const commentContent = document.getElementById('comment_content');
   const submitButton = document.querySelector('#submit-button');
 
-  commentContent.addEventListener('keyup', e => {
-    if(commentContent.value.length >= 2) {
-      submitButton.disabled = false
-    } else {
-      submitButton.disabled = true
-    }
-  });
+  if(commentContent && submitButton) {
+    commentContent.addEventListener('keyup', e => {
+      if(commentContent.value.length >= 2) {
+        submitButton.disabled = false
+      } else {
+        submitButton.disabled = true
+      }
+    });
+  }
 </script>

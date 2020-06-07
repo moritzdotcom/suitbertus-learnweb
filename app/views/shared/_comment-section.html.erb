@@ -1,5 +1,5 @@
 <% if @exam.comments.blank? %>
-  Noch keine Kommentare für diese Klausur...
+  <p class="mar-bottom-2">Noch keine Kommentare für diese Klausur...</p>
 <% else %>
   <% comments.each do |comment| %>
     <div id="comment-<%= comment.id %>" class="exam-comment <%= 'user-comment' if comment.user == current_user %>">
@@ -8,6 +8,11 @@
         <p class="comment-timestamp"><%= comment.date %></p>
       </div>
       <p class="comment-content"><%= comment.content %></p>
+      <% if user_signed_in? %>
+        <% if current_user.admin || current_user == comment.user %>
+          <p class="comment-delete"><%= link_to '<i class="fas fa-trash"></i>'.html_safe, exam_comment_path(exam, comment), method: :delete, data: {confirm: "Willst du den Kommentar wirklich löschen?"}, remote: true, class: 'icon-link' %></p>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
 <% end %>
@@ -17,3 +22,16 @@
     <%= f.button :submit, 'Senden', disabled: true, class: 'button-small button-sign-in mar-left-1', id: 'submit-button' %>
   <% end %>
 </div>
+
+<script>
+  const commentContent = document.getElementById('comment_content');
+  const submitButton = document.querySelector('#submit-button');
+
+  commentContent.addEventListener('keyup', e => {
+    if(commentContent.value.length >= 2) {
+      submitButton.disabled = false
+    } else {
+      submitButton.disabled = true
+    }
+  });
+</script>

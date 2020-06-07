@@ -15,6 +15,7 @@
   border-radius: 7px;
   box-shadow: 2px 2px 5px $hover-gray;
   margin-bottom: 1rem;
+  position: relative;
 
   .comment-header {
     display: flex;
@@ -28,6 +29,17 @@
 
   .comment-header {
     color: $main-green;
+  }
+
+  .comment-delete {
+    position: absolute;
+    right: 1rem;
+    bottom: 0;
+    opacity: 0.3;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 

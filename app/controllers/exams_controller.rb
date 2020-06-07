@@ -49,6 +49,7 @@ class ExamsController < ApplicationController
   end
 
   def destroy
+    raise
     @subject = @exam.subject
     @exam.pdf_file.purge
     @exam.destroy

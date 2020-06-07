@@ -25,21 +25,8 @@
     </div>
   <% end %>
 
-  <h3 class="mar-top-1 mar-bottom-1">Kommentare</h3>
+  <h3 class="mar-top-1 mar-bottom-half">Kommentare</h3>
   <div id="comments">
     <%= render 'shared/comment-section', comments: @exam.comments.order(created_at: :desc), comment: @comment, exam: @exam %>
   </div>
 </div>
-
-<script>
-  const commentContent = document.getElementById('comment_content');
-  const submitButton = document.querySelector('#submit-button');
-
-  commentContent.addEventListener('keyup', e => {
-    if(commentContent.value.length >= 2) {
-      submitButton.disabled = false
-    } else {
-      submitButton.disabled = true
-    }
-  });
-</script>

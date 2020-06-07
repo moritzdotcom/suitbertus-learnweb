@@ -15,6 +15,11 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment.delete
+    render 'exams/show'
+  end
+
   private
 
   def set_exam

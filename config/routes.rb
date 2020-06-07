@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :grades
   resources :subjects
   resources :exams do
-    resources :comments, only: [:create, :update, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
 
   resources :teachers do

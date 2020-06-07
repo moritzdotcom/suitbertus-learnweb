@@ -3,6 +3,7 @@ class Exam < ApplicationRecord
   belongs_to :subject
   belongs_to :user
   has_one :grade, through: :subject
+  has_many :comments
 
   has_one_attached :pdf_file
 

@@ -13,6 +13,7 @@ class ExamsController < ApplicationController
 
   def show
     @related_exams = Subject.find(@exam.subject.id).exams.where.not(id: @exam.id).first(6)
+    @comment = Comment.new
   end
 
   def new

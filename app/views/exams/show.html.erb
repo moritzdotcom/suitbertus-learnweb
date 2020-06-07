@@ -16,7 +16,7 @@
     </div>
   </div>
   <iframe src="<%= cl_image_path @exam.pdf_file.key %>" id="exam-pdf-reader"> </iframe>
-  <% if @related_exams.count > 0 %>
+  <% if !@related_exams.blank? %>
     <h4 class="mar-top-1">Weitere Klausuren</h4>
     <div class="exam-list main-list mar-top-half mar-bottom-1">
       <% @related_exams.each do |exam| %>
@@ -24,4 +24,22 @@
       <% end %>
     </div>
   <% end %>
+
+  <h3 class="mar-top-1 mar-bottom-1">Kommentare</h3>
+  <div id="comments">
+    <%= render 'shared/comment-section', comments: @exam.comments.order(created_at: :desc), comment: @comment, exam: @exam %>
+  </div>
 </div>
+
+<script>
+  const commentContent = document.getElementById('comment_content');
+  const submitButton = document.querySelector('#submit-button');
+
+  commentContent.addEventListener('keyup', e => {
+    if(commentContent.value.length >= 2) {
+      submitButton.disabled = false
+    } else {
+      submitButton.disabled = true
+    }
+  });
+</script>

@@ -1,0 +1,19 @@
+<% if @exam.comments.blank? %>
+  Noch keine Kommentare für diese Klausur...
+<% else %>
+  <% comments.each do |comment| %>
+    <div id="comment-<%= comment.id %>" class="exam-comment <%= 'user-comment' if comment.user == current_user %>">
+      <div class="comment-header">
+        <p class="comment-creator"><strong><%= comment.user.full_name %></strong></p>
+        <p class="comment-timestamp"><%= comment.date %></p>
+      </div>
+      <p class="comment-content"><%= comment.content %></p>
+    </div>
+  <% end %>
+<% end %>
+<div class="new-comment-form">
+  <%= simple_form_for([exam, comment], remote: true) do |f| %>
+    <%= f.input_field :content, placeholder: 'Kommentar...' %>
+    <%= f.button :submit, 'Senden', disabled: true, class: 'button-small button-sign-in mar-left-1', id: 'submit-button' %>
+  <% end %>
+</div>

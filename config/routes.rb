@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :grades
   resources :subjects
-  resources :exams
+  resources :exams do
+    resources :comments, only: [:create, :update, :destroy]
+  end
+
   resources :teachers do
     resources :ratings, only: [:new, :create, :edit, :update, :destroy]
   end

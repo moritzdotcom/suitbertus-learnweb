@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :exams
   has_many :ratings
+  has_many :comments
 
   validates_presence_of :first_name, message: 'Dein Vorname'
   validates_presence_of :last_name, message: 'Dein Nachname'

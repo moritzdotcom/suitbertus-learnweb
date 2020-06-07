@@ -1,0 +1,1 @@
+$('#comments').html("<%= j render 'shared/comment-section', comments: @exam.comments.order(created_at: :desc), comment: Comment.new, exam: @exam %>")

@@ -1,0 +1,31 @@
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .hamburger-line {
+    width: 2rem;
+    height: .3rem;
+    background: #D1D2D3;
+    border-radius: 2rem;
+    transition: transform .3s ease;
+  }
+
+  .hamburger-line-top {
+    margin-bottom: .5rem;
+    margin-top: .3rem;
+
+    &.clicked {
+      transform: rotate(45deg) translate(4px, 4px);
+    }
+  }
+
+  .hamburger-line-bottom {
+    margin-bottom: .3rem;
+
+    &.clicked {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+  }
+}

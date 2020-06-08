@@ -30,20 +30,21 @@
   .comment-header {
     color: $main-green;
   }
+}
 
-  .comment-delete {
-    position: absolute;
-    right: 1rem;
-    bottom: 0;
-    opacity: 0.3;
+.comment-delete {
+  position: absolute;
+  right: 1rem;
+  bottom: 0;
+  opacity: 0.3;
 
-    &:hover {
-      opacity: 1;
-    }
+  &:hover {
+    opacity: 1;
   }
 }
 
 .new-comment-form {
+  margin-bottom: -1rem;
   position: sticky;
   bottom: 0;
   left: 0;

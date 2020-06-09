@@ -2,12 +2,12 @@
   <div class="exam-header">
     <% if user_signed_in? %>
       <% if current_user.admin || current_user == @exam.user %>
-        <h1><%= @exam.title %> (<%= @exam.year %>) <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_exam_path(@exam), class: 'icon-link' %> <%= link_to '<i class="fas fa-trash"></i>'.html_safe, exam_path(@exam), method: :delete, data: {confirm: "Willst du diese Klausur wirklich löschen?"}, class: 'icon-link' %></h1>
+        <h2><%= @exam.title %> (<%= @exam.year %>) <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_exam_path(@exam), class: 'icon-link' %> <%= link_to '<i class="fas fa-trash"></i>'.html_safe, exam_path(@exam), method: :delete, data: {confirm: "Willst du diese Klausur wirklich löschen?"}, class: 'icon-link' %></h2>
       <% else %>
-        <h1><%= @exam.title %> (<%= @exam.year %>)</h1>
+        <h2><%= @exam.title %> (<%= @exam.year %>)</h2>
       <% end %>
     <% else %>
-      <h1><%= @exam.title %> (<%= @exam.year %>)</h1>
+      <h2><%= @exam.title %> (<%= @exam.year %>)</h2>
     <% end %>
     <h4><%= link_to "<i class='#{@exam.subject.icon} pad-right-half'></i>#{@exam.subject.name} - Stufe #{@exam.subject.grade.grade}".html_safe, subject_path(@exam.subject), class: 'exam-subheader-link' %> - <%= link_to @exam.teacher.name, teacher_path(@exam.teacher), class: 'exam-subheader-link' %></h4>
     <h5 class="pad-bottom-half">Hochgeladen von: <%= @exam.user.full_name %></h5>

@@ -21,23 +21,3 @@
     <%= link_to 'Löschen', teacher_rating_path(@teacher, @rating), data: { confirm: "Diese Bewertung wirklich löschen?" }, method: :delete, class: "btn btn-danger" %>
   </div>
 </div>
-
-<script>
-  rating = document.getElementById('rating_rating').value;
-  document.getElementById(`star-${rating}`).classList.add('checked');
-
-  $(document).ready(function(){
-    // Check Radio-box
-    $(".teacher-rating-inputs input:radio").attr("checked", false);
-
-    $('.teacher-rating-inputs input').click(function () {
-      $(".teacher-rating-inputs span").removeClass('checked');
-      $(this).parent().addClass('checked');
-    });
-
-    $('input:radio').change(
-      function(){
-        $('#rating_rating').val(Number(this.value));
-    });
-  });
-</script>

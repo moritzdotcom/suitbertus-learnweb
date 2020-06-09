@@ -54,14 +54,3 @@
     <% end %>
   </div>
 </nav>
-
-<script>
-  hamburgerIcon = document.querySelector('.navbar-toggler');
-  hamburgerLines = document.querySelectorAll('.hamburger-line')
-
-  hamburgerIcon.addEventListener('click', e => {
-    hamburgerLines.forEach((line) => {
-      line.classList.toggle('clicked');
-    });
-  });
-</script>

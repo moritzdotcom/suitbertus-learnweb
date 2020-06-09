@@ -32,20 +32,3 @@
     <%= link_to 'Zurück', teacher_path(@teacher), class: 'btn button-sign-up mar-bottom-1' %>
   </div>
 <% end %>
-
-<script>
-  $(document).ready(function(){
-    // Check Radio-box
-    $(".teacher-rating-inputs input:radio").attr("checked", false);
-
-    $('.teacher-rating-inputs input').click(function () {
-      $(".teacher-rating-inputs span").removeClass('checked');
-      $(this).parent().addClass('checked');
-    });
-
-    $('input:radio').change(
-      function(){
-        $('#rating_rating').val(Number(this.value));
-    });
-  });
-</script>

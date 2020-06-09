@@ -69,17 +69,3 @@
     </div>
   <% end %>
 </div>
-
-<script>
-  showButtons = document.querySelectorAll('.toggle-password')
-  showButtons.forEach(button => {
-    button.addEventListener('mouseenter', e => {
-      document.getElementById(button.dataset.toggle).type = 'text';
-    });
-    button.addEventListener('mouseleave', e => {
-      document.getElementById(button.dataset.toggle).type = 'password';
-    });
-  });
-</script>
-
-

@@ -23,13 +23,3 @@
     </div>
   <% end %>
 </div>
-
-<script>
-  showButton = document.querySelector('.toggle-password')
-  showButton.addEventListener('mouseenter', e => {
-    document.getElementById(showButton.dataset.toggle).type = 'text';
-  });
-  showButton.addEventListener('mouseleave', e => {
-    document.getElementById(showButton.dataset.toggle).type = 'password';
-  });
-</script>

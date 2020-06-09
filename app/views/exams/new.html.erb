@@ -10,9 +10,9 @@
         <%= f.input :teacher_name, label: 'Lehrer', placeholder: 'Lehrer', error: 'Bitte trage hier den Namen des Lehrers ein' %>
       </div>
       <div class="file-upload d-flex align-items-center">
-        <%= f.label :pdf_file, label: '<i class="fas fa-upload"></i> PDF'.html_safe, class: 'button-small button-sign-in mar-right-1' %>
+        <%= f.label :pdf_file, label: '<i class="fas fa-upload"></i> PDF'.html_safe, class: 'button-small button-sign-in mar-right-1 text-center' %>
         <%= f.input_field :pdf_file, as: :file, error: 'Bitte lade hier eine PDF Datei der Klausur hoch' %>
-        <h5 id="pdf-file-uploaded"></h5><h5 id="pdf-file-uploaded-error" style="color: red; margin-left: 1rem;"></h5>
+        <p id="pdf-file-uploaded"></p><p id="pdf-file-uploaded-error" style="color: red; margin-left: 1rem;"></p>
       </div>
       <div class="d-flex justify-content-center mb-5">
         <%= f.button :submit, 'Hochladen', disabled: true, class: "button button-sign-in", id: 'submit' %>
@@ -28,23 +28,6 @@
         source: availableTeachers
       });
     });
-
-    fileUpload = document.querySelector('.file-upload input')
-    fileUpload.addEventListener('input', () => {
-      if(fileUpload.files.length == 1) {
-        document.getElementById('pdf-file-uploaded-error').innerText = ''
-        document.getElementById('pdf-file-uploaded').innerText = fileUpload.files[0].name
-        if(fileUpload.files[0].type == 'application/pdf') {
-          document.querySelector('#submit').disabled = false
-        } else {
-          document.getElementById('pdf-file-uploaded-error').innerText = ' Bitte lade eine PDF Datei hoch'
-          document.querySelector('#submit').disabled = true
-        }
-      }
-    });
-
-    document.getElementById('exam_pdf_file').style.display = 'none'
-
   </script>
 
 <% else %>

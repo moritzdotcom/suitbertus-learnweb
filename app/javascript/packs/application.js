@@ -5,3 +5,4 @@ import '../components/filter-exams';
 import '../components/file-upload';
 import '../components/rating';
 import '../components/comment-section';
+import '../components/tooltip-activate';

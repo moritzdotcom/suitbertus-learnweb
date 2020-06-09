@@ -26,7 +26,7 @@
 <% end %>
 
 <% if @exams.count > 0 %>
-  <h2 class="mar-top-1">Arbeiten</h2>
+  <h2 class="mar-top-1">Klausuren</h2>
   <div class="exam-list main-list mar-top-1">
     <% @exams.each do |exam| %>
       <%= render 'shared/exam-card', exam: exam %>

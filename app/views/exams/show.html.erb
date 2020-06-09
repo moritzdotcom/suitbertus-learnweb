@@ -11,8 +11,9 @@
     <% end %>
     <h4><%= link_to "<i class='#{@exam.subject.icon} pad-right-half'></i>#{@exam.subject.name} - Stufe #{@exam.subject.grade.grade}".html_safe, subject_path(@exam.subject), class: 'exam-subheader-link' %> - <%= link_to @exam.teacher.name, teacher_path(@exam.teacher), class: 'exam-subheader-link' %></h4>
     <h5 class="pad-bottom-half">Hochgeladen von: <%= @exam.user.full_name %></h5>
-    <div class="exam-download-link pad-bottom-half">
+    <div class="exam-download-link pad-bottom-half d-flex align-items-center justify-content-around">
       <%= link_to '<h5><i class="fas fa-download"></i> Download</h5>'.html_safe, "#{cl_image_path @exam.pdf_file.key}", download: "#{@exam.title} - #{@exam.year}", target: '_blank' %>
+      <a href="#comments"><h5><i class="fas fa-comments"></i> Kommentare</h5></a>
     </div>
   </div>
   <iframe src="<%= cl_image_path @exam.pdf_file.key %>" id="exam-pdf-reader"> </iframe>

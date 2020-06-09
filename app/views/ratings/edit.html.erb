@@ -12,6 +12,7 @@
     </div>
     <%= f.input :rating, as: :hidden, error: 'Bitte bewerte den Lehrer' %>
     <%= f.input :comment, label: 'Kommentar' %>
+    <%= f.input :incognito, label: 'Anonym bewerten', label_html: { "data-toggle" => 'tooltip', "data-placement" => 'top', title: 'Niemand kann deinen Namen in der Bewertung sehen' } %>
     <div class="d-flex justify-content-center mb-5">
       <%= f.button :submit, 'Fertig', class: "button-small button-sign-in" %>
     </div>

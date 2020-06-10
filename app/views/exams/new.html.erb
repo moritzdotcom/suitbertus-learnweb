@@ -9,8 +9,8 @@
       <div class="ui-widget">
         <%= f.input :teacher_name, label: 'Lehrer', placeholder: 'Lehrer', error: 'Bitte trage hier den Namen des Lehrers ein' %>
       </div>
-      <div class="file-upload d-flex align-items-center">
-        <%= f.label :pdf_file, label: '<i class="fas fa-upload"></i> PDF'.html_safe, class: 'button-small button-sign-in mar-right-1 text-center' %>
+      <div class="file-upload center-content">
+        <%= f.label :pdf_file, label: '<i class="fas fa-upload"></i> PDF'.html_safe, class: 'button-small button-sign-in text-center' %>
         <%= f.input_field :pdf_file, as: :file, error: 'Bitte lade hier eine PDF Datei der Klausur hoch' %>
         <p id="pdf-file-uploaded"></p><p id="pdf-file-uploaded-error" style="color: red; margin-left: 1rem;"></p>
       </div>

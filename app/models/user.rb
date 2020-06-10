@@ -12,6 +12,8 @@ class User < ApplicationRecord
   validates_presence_of :last_name, message: 'Dein Nachname'
   validates_presence_of :email, message: 'Bitte trage deine Email ein'
 
+  after_create :send_welcome_email
+
   def full_name
     "#{first_name} #{last_name}"
   end
@@ -22,5 +24,11 @@ class User < ApplicationRecord
 
   def pro_member
     exams.count > 5
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.with(user: self).welcome.deliver_now
   end
 end

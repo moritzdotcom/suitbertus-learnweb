@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   get '/search', to: 'search#results', as: :search
   get '/dashboard', to: 'pages#dashboard', as: :dashboard
+  get '/manual', to: 'pages#manual', as: :manual
 end

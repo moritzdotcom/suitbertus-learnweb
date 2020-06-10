@@ -1,0 +1,38 @@
+<style>
+  body {
+    background: #EEE;
+    padding: 1rem 2rem;
+    font-family: sans-serif;
+  }
+
+  img {
+    margin: 1rem 0;
+  }
+
+  .color-green {
+    color: #1DDD88;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  .mar-top-2 {
+    margin-top: 2rem;
+  }
+</style>
+<h2>Hallo <%= @user.first_name %>,</h2>
+<p>Du bist jetzt Mitglied beim <span class="color-green">Suitbertus Learnweb!</span></p>
+<p>Ab sofort kannst du Klausuren hochladen, kommentieren und Lehrer Bewerten.</p>
+<p><a href="https://suitbertus-learnweb.herokuapp.com/dashboard" class="color-green">Hier</a> gehts zu deinem Dashboard, auf dem du all deine Klausuren und Bewertungen anschauen und bearbeiten kannst.</p>
+
+<h3 class="underline mar-top-2">Klausuren hochladen</h3>
+<p>Du hast eine Klausur, die wir noch nicht haben? Lade sie gerne bei uns hoch!</p>
+<p>Alle Klausuren auf unserer Platform werden im PDF Format hochgeladen. Und so gehts:</p>
+<ol>
+  <li><a href="https://suitbertus-learnweb.herokuapp.com/exams/new" class="color-green">Dieser Link</a> führt dich zum Upload Formular</li>
+  <li>Hier füllst du dann ganz einfach alle Felder aus.</li>
+  <li>Anschließend lädst du die Klausur als PDF Datei hoch. <a href="https://suitbertus-learnweb.herokuapp.com/manual" class="color-green">Hier</a> findest du eine Anleitung, wie du jede Klausur mit deinem Smartphone scannen kannst.</li>
+  <li>Klicke auf "Hochladen". Und fertig!</li>
+</ol>
+<p>Wir freuen uns sehr über jede Klausur, die du hochlädst!</p>

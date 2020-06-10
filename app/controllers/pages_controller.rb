@@ -11,4 +11,7 @@ class PagesController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def manual
+  end
 end

@@ -1,4 +1,5 @@
 <a href="/subjects/<%= subject.id %>" class="subject-card main-card card-hover-green">
   <i class='<%= subject.icon %> fa-3x pad-bottom-half'></i>
   <h5><%=  subject.name %> - Stufe <%= subject.grade.grade %></h5>
+  <p class="mar-top-half">Klausuren: <%= subject.exams.count %></p>
 </a>

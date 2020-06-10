@@ -34,11 +34,11 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <div id="main-container">
       <%= yield %>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
 
       <%= javascript_include_tag 'application' %>
 

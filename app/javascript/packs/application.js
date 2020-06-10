@@ -6,3 +6,4 @@ import '../components/file-upload';
 import '../components/rating';
 import '../components/comment-section';
 import '../components/tooltip-activate';
+import '../components/notice-padding';
